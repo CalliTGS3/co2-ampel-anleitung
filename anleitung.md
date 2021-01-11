@@ -7,8 +7,10 @@ SCD30=https://github.com/CalliTGS3/pxt-SCD30
 
 ## ~avatar avatar @unplugged
 
-Wir bauen mit dem @boardname@ ein CO2 Messgerät. Dazu benötigen wir einen Sensor, den wir Anschluss A0 des @boardname@ anschliessen. Der @boardname@ zeigt uns die CO2 Konzentration in der Raumluft an,
-die Messung efolgt sooft wir das wollen. Wir überlegen uns, wie wir den Wert mithilfe von einfach zu erkennenden Symbolen auf der 5X5 LED Matrix des @boardname@ anzeigen können.
+Wir bauen mit dem @boardname@ ein CO2 Messgerät für die Raumluft. 
+Dazu benötigen wir einen Sensor, den wir Anschluss A0 des @boardname@ anschliessen. 
+Der @boardname@ zeigt uns die CO2 Konzentration in der Raumluft an, die Messung efolgt so oft wie wir das wollen. 
+Wir überlegen uns, wie wir den Wert mit Hilfe von einfach zu erkennenden Symbolen auf der 5X5 LED Matrix des @boardname@ anzeigen können.
 
 
 ## Schritt 1 @fullscreen
