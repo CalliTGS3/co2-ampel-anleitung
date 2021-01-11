@@ -48,22 +48,24 @@ function ZeigeCO2 () {
             . . . . .
             . . . . .
             `)
-    } if (CO2 < 2000) {
-        basic.showLeds(`
-            . . . . .
-            . # # # .
-            . # # # .
-            . # # # .
-            . . . . .
-            `)
     } else {
-        basic.showLeds(`
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            `)
+        if (CO2 < 2000) {
+            basic.showLeds(`
+                . . . . .
+                . # # # .
+                . # # # .
+                . # # # .
+                . . . . .
+                `)
+        } else {
+            basic.showLeds(`
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                `)
+        }
     }
 }
 
@@ -142,6 +144,53 @@ input.onButtonPressed(Button.A, function () {
     basic.showNumber(CO2)
 })
 ```
+
+
+## Schritt 8 @fullscreen
+
+Du kannst die Anzeigefunktion noch um einen Alarmton erweitern. Benutze dazu den Block ``||Music:spiele Note||`` oder eine andere
+Musikfunktion. Probiere verschiedene Töne aus! Verwende die Alarmfunktion mit Bedacht, wir wollen ja niemanden stören, wenn "die Luft rein ist".
+
+```blocks
+function ZeigeCO2 () {
+    if (CO2 < 1000) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
+            `)
+        basic.pause(100)    
+        basic.clearScreen()
+        basic.pause(900)    
+    } else {
+        if (CO2 < 2000) {
+            basic.showLeds(`
+                . . . . .
+                . # # # .
+                . # # # .
+                . # # # .
+                . . . . .
+                `)
+            basic.pause(100)    
+            basic.clearScreen()
+            basic.pause(900)    
+        } else {
+            basic.showLeds(`
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                `)
+            music.playTone(262, music.beat(BeatFraction.Half))
+            basic.pause(100)    
+            basic.clearScreen()
+            basic.pause(900)    
+        }
+    }
+}
 
 
 ## Schritt 8 @fullscreen
