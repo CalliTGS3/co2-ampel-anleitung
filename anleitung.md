@@ -33,13 +33,13 @@ basic.forever(function () {
 
 ## Schritt 3 @fullscreen
 
-Wir programmieren eine Funktion zum Anzeigen des gemessenen CO2 Wertes, weil wir immer die gleichen Programmcode für die Anzeige aufrufen und unser Programm so viel übersichtlicher wird. 
+Wir programmieren eine Funktion zum Anzeigen des gemessenen CO2 - Wertes, weil wir immer die gleichen Programmcode für die Anzeige aufrufen und unser Programm so viel übersichtlicher wird. 
 Erstelle eine Funktion ``||functions:ZeigeCO2||`` und rufe die Funktion unmittelbar nach der Messung des CO2 Wertes auf.
 Setze in die Funktion einen Entscheidung-Block ``||Logic: wenn <wahr> dann .. ansonsten ..||`` ein, um den CO2 Wert zu prüfen und daraus ein Symbol für die 5x5 LED atrix zu erzeugen. 
 Ergänze die Funktion selbständig für den Bereich 1000ppm bis 2000ppm und 2000ppm bis 3000ppm, indem Du zusätzliche wenn - dann - Zweige mit dem PLUS einfügst .
 
 ```blocks
-function ZeigeCO2 {
+function ZeigeCO2 () {
     if (CO2 < 1000) {
         basic.showLeds(`
             . . . . .
@@ -54,9 +54,8 @@ function ZeigeCO2 {
             . # # # .
             . # # # .
             . # # # .
-            . # # # .
+            . . . . .
             `)
-    }
     } else {
         basic.showLeds(`
             # # # # #
@@ -67,6 +66,7 @@ function ZeigeCO2 {
             `)
     }
 }
+
 
 basic.forever(function () {
     CO2 = SCD30.readCO2()
@@ -79,7 +79,7 @@ basic.forever(function () {
 
 Wir möchten, daß die Anzeige blinkt, um Batteriestrom zu sparen. 
 Erweitere dazu jeden einzelnen Zweig in der Funktion ``||functions:ZeigeCO2||``
-um eine Wartzeit und das Löschen der 5x5 LED Matrix und einer zusätzlichen Wartezeit.
+um eine Wartzeit nach der Anzeige, das Löschen der 5x5 LED Matrix und einer zusätzlichen Wartezeit.
 Experimentiere mit verschiedenen Wartezeiten, bis Dir die Anzeige gefällt!
 
 ```blocks
