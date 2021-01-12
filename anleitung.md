@@ -2,7 +2,7 @@
 
 ```package
 devices
-bluetooth
+radio
 SCD30=github:callitgs3/pxt-scd30
 ```
 
