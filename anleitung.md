@@ -1,11 +1,5 @@
 # CO2 Ampel
 
-```package
-devices
-bluetooth
-SCD30=github:callitgs3/pxt-SCD30
-```
-
 ## ~avatar avatar @unplugged
 
 Wir bauen mit dem @boardname@ eine CO2 Ampel für die Raumluft. 
@@ -205,3 +199,7 @@ Damit wird Dein Programm zum @boardname@ übertragen.
 
 Gut gemacht! Du hast ein CO2 Messgerät für den @boardname@ programmiert.
 Verlasse diese Anleitung, indem Du auf ``|Fertigstellen|`` klickst. 
+
+```package
+SCD30=github:callitgs3/pxt-scd30#v0.9.0
+```
