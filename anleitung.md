@@ -1,8 +1,6 @@
 # CO2 Ampel
 
 ```package
-devices
-radio
 SCD30=github:callitgs3/pxt-scd30
 ```
 
