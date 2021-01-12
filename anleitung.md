@@ -4,7 +4,7 @@
 
 Wir bauen mit dem @boardname@ eine CO2 Ampel für die Raumluft. 
 Dazu benötigen wir einen CO2 - Sensor, den wir am Anschluss A0 des @boardname@ anschliessen. 
-Der @boardname@ zeigt uns die CO2 - Konzentration in der Raumluft an, die Messung efolgt so oft wie wir das wollen. 
+Der @boardname@ zeigt uns die CO2 - Konzentration in der Raumluft an, die Messung erfolgt so oft wie wir das wollen. 
 Wir überlegen uns, wie wir den Wert mit Hilfe von einfach zu erkennenden Ampel - Symbolen auf der 5X5 LED Matrix des @boardname@ anzeigen können.
 
 ![Sensor am Calliope mini anschliessen](https://github.com/CalliTGS3/co2-ampel-anleitung/blob/master/SCD30.jpg?raw=true)
@@ -30,12 +30,15 @@ basic.forever(function () {
 
 ## Schritt 3 @fullscreen
 
-Wir programmieren eine Funktion zum Anzeigen des gemessenen CO2 - Wertes, weil wir immer den gleichen Programmcode für die Anzeige aufrufen und unser Programm so viel übersichtlicher wird. 
-Erstelle eine Funktion ``||Functions:ZeigeCO2||`` und rufe die Funktion unmittelbar nach der Messung des CO2 Wertes auf.
-Setze in die Funktion einen Entscheidung-Block ``||Logic: wenn <wahr> dann .. ansonsten ..||`` ein, um den CO2 Wert zu prüfen und daraus ein Ampel - Symbol für die 5x5 LED Matrix zu erzeugen.
+Wir programmieren eine Funktion zum Anzeigen des gemessenen CO2 - Wertes, weil wir immer den gleichen Programmcode 
+für die Anzeige aufrufen und unser Programm so viel übersichtlicher wird. 
+Erstelle eine Funktion ``||Functions:ZeigeCO2||``.
+Setze in die Funktion einen Entscheidung-Block ``||Logic: wenn <wahr> dann .. ansonsten ..||`` ein, um den CO2 Wert zu prüfen 
+und daraus ein Ampel - Symbol für die 5x5 LED Matrix zu erzeugen.
 Wir haben leider keine Farben in der 5x5 LED Matrix verfügbar und so stellen wir die Ampel mit unterschiedlich großen Quadraten dar.  
 Benutze dafür den Block ``||basic:Zeige LEDs||`` und klicke die LEDs an, die aufleuchten sollen.
-Ergänze die Funktion selbständig für den Bereich 1000ppm bis 2000ppm und 2000ppm bis 3000ppm, indem Du zusätzliche wenn - dann - Zweige mit dem PLUS einfügst .
+Ergänze die Funktion selbständig für den Bereich 1000ppm bis 2000ppm und 2000ppm bis 3000ppm, 
+indem Du zusätzliche wenn - dann - Zweige mit dem PLUS einfügst .
 
 ```blocks
 function ZeigeCO2 () {
@@ -70,7 +73,6 @@ function ZeigeCO2 () {
 
 basic.forever(function () {
     let CO2 = SCD30.readCO2()
-    ZeigeCO2()
 })
 ```
 
@@ -78,12 +80,13 @@ basic.forever(function () {
 ## Schritt 4 @fullscreen
 
 Wir möchten, daß die Anzeige blinkt, um Batteriestrom zu sparen. 
-Erweitere dazu jeden einzelnen Zweig in der Funktion ``||functions:ZeigeCO2||``
-um eine Wartzeit nach der Anzeige, das Löschen der 5x5 LED Matrix und einer zusätzlichen Wartezeit.
-Experimentiere mit verschiedenen Wartezeiten, bis Dir die Anzeige gefällt!
+Erweitere dazu die Funktion ``||Functions:ZeigeCO2||`` nach der Entscheidung 
+um eine Wartezeit nach der Anzeige und das Löschen der 5x5 LED Matrix. Damit blitzen die LED's nur solange auf, wie Du vorgibst!
+Experimentiere mit verschiedenen Wartezeiten, bis Dir die Anzeige gefällt! 
+Die Wartezeit programmierst Du mit ``||basic:pausiere (ms)||`` und 100 ms und das Löschen der LED Matrix mit ``||basic:Bildschirminhalt löschen||``
 
 ```blocks
-function ZeigeCO2 {
+function ZeigeCO2 () {
     if (CO2 < 1000) {
         basic.showLeds(`
             . . . . .
@@ -92,36 +95,59 @@ function ZeigeCO2 {
             . . . . .
             . . . . .
             `)
-        basic.pause(100)    
-        basic.clearScreen()
-        basic.pause(900)    
+    } else {
+        if (CO2 < 2000) {
+            basic.showLeds(`
+                . . . . .
+                . # # # .
+                . # # # .
+                . # # # .
+                . . . . .
+                `)
+        } else {
+            basic.showLeds(`
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                `)
+        }
     }
+    basic.pause(100)    
+    basic.clearScreen()
 }
+
+basic.forever(function () {
+    let CO2 = SCD30.readCO2()
+})
 ```
 
 
 ## Schritt 5 @fullscreen
 
-Die Schleife wird jetzt sehr oft abgearbeitet, weil unser @boardname@ sehr schnell ist, ungefähr ein paar hundert Mal pro Sekunde.
-So oft brauchen wir die Messung gar nicht und deshalb lassen wir den @boardname@ in jeder Schleife einige Zeit warten.
-Eine Wartezeit wird auf dem @boardname@ in Millisekunden (1 ms ist eine tausendstel Sekunde) angegeben.
-Wir wollen nur einmal pro Minute messen und deshalb muss unser @boardname@ 60*1000ms = 60000 msec warten.
-Dazu benutzen wir den Block ``||basic:pausiere (ms)||`` und tragen als Wert 60000 ein.
+Die Hauptschleife des Programmes wird jetzt sehr oft abgearbeitet, weil unser @boardname@ sehr schnell ist, ungefähr ein paar hundert Mal pro Sekunde.
+So oft brauchen wir die Messung gar nicht und deshalb bauen wir eine zusätzliche Schleife unmittelbar nach der Messung ein,
+in der der @boardname@ die Anzeige Funktion aufruft und eine Sekunde wartet. Wenn wir diese Schleife so programmieren, daß sie 60 Mal
+durchlaufen wird, vergehen die Zeit für die Anzeige (100 ms) + die Wartezeit (900 ms) = 1 sec 60 mal, also ungefähr eine Minute
+bis zur nächsten Messung des CO2 Wertes.  
+Wir rufen in der Schleife die Funktion ``||Functions:ZeigeCO2||`` auf und für das Warten verwenden wir den Block ``||basic:pausiere (ms)||`` und tragen als Wert 900 ein.
 
 ```blocks
 basic.forever(function () {
     let CO2 = SCD30.readCO2()
-    ZeigeCO2()
-    basic.pause(60000)
+    for (let index = 0; index < 60; index++) {
+        ZeigeCO2()
+        basic.pause(900)
+    }
 })
 ```
 
 
 ## Schritt 6 @fullscreen
 
-Um zu prüfen, ob unsere Ampel richtig arbeitet, programmieren wir eine Funktion, die uns den CO2 Wert als Zahl anzeigt.
-Wir möchten mit einem Knopfdruck auf Taste A den Wert des CO2 Sensors auf der Anzeige des @boardname@ sehen.
-Dazu nimmst Du den Block ``||Input:wenn Knopf A gedrückt||`` aus dem Bereich ``||Input:Eingaben||`` und setzt ihn an einer beliebigen Stelle im Programmfenster rechts.
+Um nicht immer eine Minute auf die nächste Messung warten zu müssen, programmieren wir unseren @boardname@ so, daß beim Drücken der Taste A
+der CO2 Sensor sofort abgefragt wird. Dazu nimmst Du den Block ``||Input:wenn Knopf A gedrückt||`` aus dem Bereich ``||Input:Eingaben||`` und setzt ihn an einer beliebigen Stelle im Programmfenster rechts.
 Nimm aus der Toolbox aus dem Block ``||Variables:Variablen||`` die Zuweisung ``||Variables:setze CO2 auf||`` und setze ihn in
 den ``||Input:wenn Knopf A gedrückt||`` Block. Setze in die Variablenzuweisung aus der ``||SCD30:SCD30||`` Toolbox den Block ``||SCD30:CO2 Wert||`` als Wert ein. 
 
@@ -134,11 +160,13 @@ input.onButtonPressed(Button.A, function () {
 
 ## Schritt 7 @fullscreen
 
-Für die Anzeige des CO2 - Wertes benutzt Du den ``||basic:zeige Zahl||`` Block.
+Um zu prüfen, ob unsere Ampel richtig arbeitet, programmieren wir eine Funktion, die uns den aktuellen CO2 - Wert als Zahl anzeigt.
+Wir möchten mit einem Knopfdruck auf Taste B den Wert des CO2 Sensors auf der Anzeige des @boardname@ sehen.
+Dazu nimmst Du den Block ``||Input:wenn Knopf B gedrückt||`` aus dem Bereich ``||Input:Eingaben||`` und setzt ihn an einer beliebigen Stelle im Programmfenster rechts.
+Für die Anzeige des CO2 - Wertes benutzt Du den ``||basic:zeige Zahl||`` Block und wählst die ``||Variables:CO2||`` aus.
 
 ```blocks
-input.onButtonPressed(Button.A, function () {
-    CO2 = SCD30.readCO2()
+input.onButtonPressed(Button.B, function () {
     basic.showNumber(CO2)
 })
 ```
@@ -159,9 +187,6 @@ function ZeigeCO2 () {
             . . . . .
             . . . . .
             `)
-        basic.pause(100)    
-        basic.clearScreen()
-        basic.pause(900)    
     } else {
         if (CO2 < 2000) {
             basic.showLeds(`
@@ -171,9 +196,6 @@ function ZeigeCO2 () {
                 . # # # .
                 . . . . .
                 `)
-            basic.pause(100)    
-            basic.clearScreen()
-            basic.pause(900)    
         } else {
             basic.showLeds(`
                 # # # # #
@@ -183,11 +205,10 @@ function ZeigeCO2 () {
                 # # # # #
                 `)
             music.playTone(262, music.beat(BeatFraction.Half))
-            basic.pause(100)    
-            basic.clearScreen()
-            basic.pause(900)    
         }
     }
+    basic.pause(100)    
+    basic.clearScreen()
 }
 ```
 
