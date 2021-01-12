@@ -7,19 +7,19 @@ SCD30=github:callitgs3/pxt-scd30
 ## ~avatar avatar @unplugged
 
 Wir bauen mit dem @boardname@ eine CO2 Ampel für die Raumluft. 
-Dazu benötigen wir einen CO2 - Sensor, den wir Anschluss A0 des @boardname@ anschliessen. 
+Dazu benötigen wir einen CO2 - Sensor, den wir am Anschluss A0 des @boardname@ anschliessen. 
 Der @boardname@ zeigt uns die CO2 - Konzentration in der Raumluft an, die Messung efolgt so oft wie wir das wollen. 
 Wir überlegen uns, wie wir den Wert mit Hilfe von einfach zu erkennenden Ampel - Symbolen auf der 5X5 LED Matrix des @boardname@ anzeigen können.
 
 
 ## Schritt 1 @fullscreen
 
-Wir speichern den CO2 - Wert in einer Variablen. Erstelle dazu eine Variable namens ``||Variables:CO2||``, indem Du auf den Bereich ``||Variables:Variablen||`` klickst.
+Wir speichern den gemessenen CO2 - Wert in einer Variablen. Erstelle dazu eine Variable namens ``||Variables:CO2||``, indem Du auf den Bereich ``||Variables:Variablen||`` klickst.
 
 
 ## Schritt 2 @fullscreen
 
-Wir die bereits vorhandene unendliche Schleife ``||basic:dauerhaft||``, darin messen wir den CO2 - Wert und zeigen ihn an.
+Wir benutzen die bereits vorhandene unendliche Schleife ``||basic:dauerhaft||``, darin messen wir den CO2 - Wert und zeigen ihn an.
 Nimm aus der Toolbox aus dem Block ``||Variables:Variablen||`` die Zuweisung ``||Variables:setze CO2 auf||`` und setze ihn in
 die ``||basic:dauerhaft||`` Schleife. Setze aus der Toolbox den Block ``||SCD30:CO2||`` als Wert ein. 
 
