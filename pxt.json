@@ -2,8 +2,7 @@
     "name": "co2-ampel-anleitung",
     "description": "",
     "dependencies": {
-        "core": "*",
-        "radio": "*"
+        "core": "*"
     },
     "files": [
         "main.blocks",

@@ -1,6 +1,8 @@
 # CO2 Ampel
 
 ```package
+devices
+bluetooth
 SCD30=github:callitgs3/pxt-scd30
 ```
 
