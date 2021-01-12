@@ -3,7 +3,7 @@
 ```package
 devices
 bluetooth
-SCD30=github:callitgs3/pxt-scd30#f1c135e2c8328f4210eed8bb8828b69537bb14fb
+scd30=github:callitgs3/pxt-scd30
 ```
 
 ## ~avatar avatar @unplugged
