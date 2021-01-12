@@ -17,7 +17,7 @@ Wir speichern den gemessenen CO2 - Wert in einer Variablen. Erstelle dazu eine V
 
 Wir benutzen die bereits vorhandene unendliche Schleife ``||basic:dauerhaft||``, darin messen wir den CO2 - Wert und zeigen ihn an.
 Nimm aus der Toolbox aus dem Block ``||Variables:Variablen||`` die Zuweisung ``||Variables:setze CO2 auf||`` und setze ihn in
-die ``||basic:dauerhaft||`` Schleife. Setze aus der Toolbox den Block ``||SCD30:CO2||`` als Wert ein. 
+die ``||basic:dauerhaft||`` Schleife. Setze aus der ``||SCD30:SCD30||`` Toolbox den Block ``||SCD30:CO2 Wert||`` als Wert ein. 
 
 ```blocks
 basic.forever(function () {
@@ -32,6 +32,7 @@ Wir programmieren eine Funktion zum Anzeigen des gemessenen CO2 - Wertes, weil w
 Erstelle eine Funktion ``||Functions:ZeigeCO2||`` und rufe die Funktion unmittelbar nach der Messung des CO2 Wertes auf.
 Setze in die Funktion einen Entscheidung-Block ``||Logic: wenn <wahr> dann .. ansonsten ..||`` ein, um den CO2 Wert zu prüfen und daraus ein Ampel - Symbol für die 5x5 LED Matrix zu erzeugen.
 Wir haben leider keine Farben in der 5x5 LED Matrix verfügbar und so stellen wir die Ampel mit unterschiedlich großen Quadraten dar.  
+Benutze dafür den Block ``||basic:Zeige LEDs||`` und klicke die LEDs an, die aufleuchten sollen.
 Ergänze die Funktion selbständig für den Bereich 1000ppm bis 2000ppm und 2000ppm bis 3000ppm, indem Du zusätzliche wenn - dann - Zweige mit dem PLUS einfügst .
 
 ```blocks
@@ -120,7 +121,7 @@ Um zu prüfen, ob unsere Ampel richtig arbeitet, programmieren wir eine Funktion
 Wir möchten mit einem Knopfdruck auf Taste A den Wert des CO2 Sensors auf der Anzeige des @boardname@ sehen.
 Dazu nimmst Du den Block ``||Input:wenn Knopf A gedrückt||`` aus dem Bereich ``||Input:Eingaben||`` und setzt ihn an einer beliebigen Stelle im Programmfenster rechts.
 Nimm aus der Toolbox aus dem Block ``||Variables:Variablen||`` die Zuweisung ``||Variables:setze CO2 auf||`` und setze ihn in
-den ``||Input:wenn Knopf A gedrückt||`` Block. Setze in die Variablenzuweisung aus der Toolbox den Block ``||SCD30:CO2||`` als Wert ein. 
+den ``||Input:wenn Knopf A gedrückt||`` Block. Setze in die Variablenzuweisung aus der ``||SCD30:SCD30||`` Toolbox den Block ``||SCD30:CO2 Wert||`` als Wert ein. 
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
@@ -189,13 +190,13 @@ function ZeigeCO2 () {
 ```
 
 
-## Schritt 8 @fullscreen
+## Schritt 9 @fullscreen
 
 Schliesse Deinen @boardname@ mit einem USB Kabel an und drücke auf ``|Herunterladen|``. Speichere Dein Programm auf dem Laufwerk **@drivename@**. 
 Damit wird Dein Programm zum @boardname@ übertragen.
 
 
-## Schritt 8
+## Schritt 10
 
 Gut gemacht! Du hast ein CO2 Messgerät für den @boardname@ programmiert.
 Verlasse diese Anleitung, indem Du auf ``|Fertigstellen|`` klickst. 
