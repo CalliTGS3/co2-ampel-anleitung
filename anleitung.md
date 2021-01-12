@@ -25,7 +25,7 @@ die ``||basic:dauerhaft||`` Schleife. Setze aus der Toolbox den Block ``||SCD30:
 
 ```blocks
 basic.forever(function () {
-    CO2 = SCD30.readCO2()
+    let CO2 = SCD30.readCO2()
 })
 ```
 
@@ -69,7 +69,7 @@ function ZeigeCO2 () {
 }
 
 basic.forever(function () {
-    CO2 = SCD30.readCO2()
+    let CO2 = SCD30.readCO2()
     ZeigeCO2()
 })
 ```
@@ -110,7 +110,7 @@ Dazu benutzen wir den Block ``||basic:pausiere (ms)||`` und tragen als Wert 6000
 
 ```blocks
 basic.forever(function () {
-    CO2 = SCD30.readCO2()
+    let CO2 = SCD30.readCO2()
     ZeigeCO2()
     basic.pause(60000)
 })
