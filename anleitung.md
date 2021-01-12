@@ -7,15 +7,15 @@ SCD30=github.com/CalliTGS3/pxt-SCD30
 
 ## ~avatar avatar @unplugged
 
-Wir bauen mit dem @boardname@ ein CO2 Messgerät für die Raumluft. 
-Dazu benötigen wir einen Sensor, den wir Anschluss A0 des @boardname@ anschliessen. 
-Der @boardname@ zeigt uns die CO2 Konzentration in der Raumluft an, die Messung efolgt so oft wie wir das wollen. 
-Wir überlegen uns, wie wir den Wert mit Hilfe von einfach zu erkennenden Symbolen auf der 5X5 LED Matrix des @boardname@ anzeigen können.
+Wir bauen mit dem @boardname@ eine CO2 Ampel für die Raumluft. 
+Dazu benötigen wir einen CO2 - Sensor, den wir Anschluss A0 des @boardname@ anschliessen. 
+Der @boardname@ zeigt uns die CO2 - Konzentration in der Raumluft an, die Messung efolgt so oft wie wir das wollen. 
+Wir überlegen uns, wie wir den Wert mit Hilfe von einfach zu erkennenden Ampel - Symbolen auf der 5X5 LED Matrix des @boardname@ anzeigen können.
 
 
 ## Schritt 1 @fullscreen
 
-Wir speichern den CO2 Wert in einer Variablen. Erstelle dazu eine Variable namens ``||Variables:CO2||``, indem du auf den Bereich ``||Variables:Variablen||`` klickst. <br>
+Wir speichern den CO2 - Wert in einer Variablen. Erstelle dazu eine Variable namens ``||Variables:CO2||``, indem Du auf den Bereich ``||Variables:Variablen||`` klickst.
 
 
 ## Schritt 2 @fullscreen
@@ -68,7 +68,6 @@ function ZeigeCO2 () {
         }
     }
 }
-
 
 basic.forever(function () {
     CO2 = SCD30.readCO2()
@@ -191,6 +190,7 @@ function ZeigeCO2 () {
         }
     }
 }
+```
 
 
 ## Schritt 8 @fullscreen
@@ -203,4 +203,3 @@ Damit wird Dein Programm zum @boardname@ übertragen.
 
 Gut gemacht! Du hast ein CO2 Messgerät für den @boardname@ programmiert.
 Verlasse diese Anleitung, indem Du auf ``|Fertigstellen|`` klickst. 
-
