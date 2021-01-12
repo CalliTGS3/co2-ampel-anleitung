@@ -7,10 +7,12 @@ Dazu benötigen wir einen CO2 - Sensor, den wir am Anschluss A0 des @boardname@ 
 Der @boardname@ zeigt uns die CO2 - Konzentration in der Raumluft an, die Messung efolgt so oft wie wir das wollen. 
 Wir überlegen uns, wie wir den Wert mit Hilfe von einfach zu erkennenden Ampel - Symbolen auf der 5X5 LED Matrix des @boardname@ anzeigen können.
 
+![Sensor am Calliope mini anschliessen](https://github.com/CalliTGS3/co2-ampel-anleitung/blob/master/SCD30.jpg?raw=true)
+
 
 ## Schritt 1 @fullscreen
 
-Wir speichern den gemessenen CO2 - Wert in einer Variablen. Erstelle dazu eine Variable namens ``||Variables:CO2||``, indem Du auf den Bereich ``||Variables:Variablen||`` klickst.
+Wir speichern den gemessenen CO2 - Wert in einer Variablen. Erstelle dazu eine Variable mit dem Namen ``||Variables:CO2||``, indem Du auf den Bereich ``||Variables:Variablen||`` klickst.
 
 
 ## Schritt 2 @fullscreen
