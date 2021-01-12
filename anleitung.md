@@ -2,7 +2,7 @@
 
 ```package
 devices
-SCD30=https://github.com/CalliTGS3/pxt-SCD30
+SCD30=github.com/CalliTGS3/pxt-SCD30
 ```
 
 ## ~avatar avatar @unplugged
