@@ -33,7 +33,7 @@ basic.forever(function () {
 Wir programmieren eine Funktion zum Anzeigen des gemessenen CO2 - Wertes, weil wir immer den gleichen Programmcode 
 für die Anzeige aufrufen und unser Programm so viel übersichtlicher wird. 
 Erstelle eine Funktion ``||Functions:ZeigeCO2||``.
-Setze in die Funktion einen Entscheidung-Block ``||Logic: wenn <wahr> dann .. ansonsten ..||`` ein, um den CO2 Wert zu prüfen 
+Setze in die Funktion eine ``||Logic: wenn <wahr> dann .. ansonsten ..||`` - Entscheidung aus dem ``||Logic:Logik||``-Block ein, um den CO2 Wert zu prüfen 
 und daraus ein Ampel - Symbol für die 5x5 LED Matrix zu erzeugen.
 Wir haben leider keine Farben in der 5x5 LED Matrix verfügbar und so stellen wir die Ampel mit unterschiedlich großen Quadraten dar.  
 Benutze dafür den Block ``||basic:Zeige LEDs||`` und klicke die LEDs an, die aufleuchten sollen.
